@@ -1,42 +1,139 @@
-import sys
-import requests
-from bs4 import BeautifulSoup
+from requests_html import HTMLSession
+s = HTMLSession()
 
-#change url to desired location on weather.com 
-#example url is for nashville
-url = "https://weather.com/weather/tenday/l/USCA0987:1:US"
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
 
-def main():
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
 
-    #retrieve html page 
-    html = requests.get(url).content
-    soup = BeautifulSoup(html, 'html.parser')
-    
-    windSpeedDirection = {}
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
 
-    #get wind speed and direction from html DetailsSummary-wind class tag
-    windQuery = soup.findAll('div', attrs={'class': 'DetailsSummary--wind--1tv7t DetailsSummary--extendedData--307Ax'})
+from requests_html import HTMLSession
+s = HTMLSession()
 
-    #get time of wind speed and direction with h3 value
-    timeQuery = soup.findAll('h3', attrs={'data-testid': 'daypartName'})
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
 
-    #future hours is the number of hours that will display the wind speed
-    #max is 23 since dictionary naming convention uses the time of day at the key
-    futureHours = 10
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
 
-    #append each wind speed and direction to corresponding time. 
-    for wind, time in zip(windQuery, timeQuery):
-        if futureHours == 0: break
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
 
-        windParsed = wind.text.replace('Wind', '')
+from requests_html import HTMLSession
+s = HTMLSession()
 
-        windParsed = windParsed.replace(' mph', '')
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
 
-        windParsed = windParsed.split(' ')
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
 
-        windSpeedDirection[time.text] = windParsed
-        futureHours = futureHours - 1
-       
-    print(windSpeedDirection)
-if __name__ == "__main__":
-    main()
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
+
+from requests_html import HTMLSession
+s = HTMLSession()
+
+query = 'youngstown'
+url = f'https://www.google.com/search?q=weather+{query}'
+
+r = s.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'})
+
+temp = r.html.find('span#wob_tm', first=True).text
+unit = r.html.find('div.vk_bk.wob-unit span.wob_t', first=True).text
+desc = r.html.find('div.VQF4g', first=True).find('span#wob_dc', first=True).text
+[0]
+print(query, temp, unit, desc)
